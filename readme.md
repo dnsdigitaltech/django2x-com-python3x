@@ -38,3 +38,20 @@ com a venv ativada basta digitar os seguintes comandos em sequências
 python
 import django
 django.VERSION
+
+Para ver onde está instalado o django dentro da venv banta acessar
+/home/desenv01/Documentos/django2x-com-python3x/venv/lib/python3.6/site-packages/django
+
+Para criar o projeto basta digitar o seguuinte comando com a sua venv ativada
+django-admin startproject controle_gastos
+
+Você poderá ver que foi criado o projeto com todos arquivos de inicialização do django
+
+Explicação dos arquivos:
+__init__.py - que diser que este dir é considerado um pacote python
+asgi.py - onde fica o core do sistema
+settings.py - é o setup do nosso projeto
+urls.py - Local onde ficará as urls do projeto
+wsgi.py - endpoint da aplicação, não mexeremos neste aquivo
+manager.py - arquivo utilitário, vai ajudar a gerenciar o projeto, criar banco de dados, migrações upser usuários, não precisa mexer.
+
