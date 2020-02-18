@@ -86,5 +86,18 @@ python manage.py runserver
 Criando o super usuario para logar na aplicação
 python manage.py createsuperuser
 
+CRIANDO URL E VIEW 
+Para criar a url basta importá de uma view específica
+from contas.views import home
+urlpatterns = [
+    path('contas/', home)
+]
 
+As views são pedaços de códigos que ficam dentro do arquivos wiew.py (funções) direcionada a uma página específica
+
+Toda view recebe requests como parâmetros e terá um return HttpResponse()
+def home(request):
+    now = datetime.datetime.now()
+    html = "<html><body>It is now %s.</body></html>" % now
+    return HttpResponse(html)
 
