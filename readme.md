@@ -183,3 +183,18 @@ No template basta pegar os valores variáveis conforme mostrado abaixo:
             {% endif %}
         {% endfor %}
     </ul>
+
+
+CRUD ['create','read','update','delete']
+
+Read - fazendo a leitura dos dados que estão na base
+Primeira coisa a fazer é chamar o importe do model na view
+
+from .models import Transacao
+
+Depois cria uma classe par aacessar todo conteúdo do banco
+
+def listagem(request):
+    data = {}
+    data['transacoes'] = Transacao.objects.all()
+    return render(request, 'contas/listagem.html', data)
