@@ -133,3 +133,26 @@ python manage.py runserver
 
 Basta ir no seu admin e verifique que já esiste a categoria lá
 http://127.0.0.1:8000/admin/
+
+Model Transação com conceito de chave estrangeira
+class Transação(models.Model):
+    data = models.DateTimeField(auto_now_add=True)
+    descricao = models.CharField(max_length=200)
+    valor = models.DecimalField(max_digits=7, decimal_places=2)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    observacoes = models.TextField()
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+E registra no admin
+
+Class Meta muda o nome da classe meta define o nome de plural da classe x
+
+    class Meta:
+        verbose_name_plural = "Transacoes"
+
+    definir como serpa exibido os dados de cada objetos na tela
+    def __str__(self):
+        return self.descricao
