@@ -156,3 +156,30 @@ Class Meta muda o nome da classe meta define o nome de plural da classe x
     definir como serpa exibido os dados de cada objetos na tela
     def __str__(self):
         return self.descricao
+
+Enviando dicionário de informações para para o templates basta envirar na view
+def home(request):
+    data = {}
+    data['transacoes'] = ['t1', 't2', 't3']
+    data['now'] = datetime.datetime.now()
+    #html = "<html><body>It is now %s.</body></html>" % now
+    return render(request, 'contas/home.html', data)
+
+No template basta pegar os valores variáveis conforme mostrado abaixo:
+<p>Agora são: {{now}}</p>
+    <h5>Exibindo todos os dados da lista</h5>
+    <ul>
+        {% for transacao in transacoes %}
+            <li>{{transacao}}</li>
+        {%endfor%}
+    </ul>
+    <h5>Exibindo dados da lista através de uma condição</h5>
+    <ul>
+        {% for transacao in transacoes %}
+            {% if transacao == 't1' %}
+                <li><b>{{transacao}}</b></li>
+            {% else %}
+                <li>{{transacao}}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>

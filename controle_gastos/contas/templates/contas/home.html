@@ -7,5 +7,23 @@
 </head>
 <body>
     <h1>Seja bem vindo</h1>
+
+    <p>Agora são: {{now}}</p>
+    <h5>Exibindo todos os dados da lista</h5>
+    <ul>
+        {% for transacao in transacoes %}
+            <li>{{transacao}}</li>
+        {%endfor%}
+    </ul>
+    <h5>Exibindo dados da lista através de uma condição</h5>
+    <ul>
+        {% for transacao in transacoes %}
+            {% if transacao == 't1' %}
+                <li><b>{{transacao}}</b></li>
+            {% else %}
+                <li>{{transacao}}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 </body>
 </html>
