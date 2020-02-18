@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 # separar meus gastos por categoria
 class Categoria(models.Model):   
