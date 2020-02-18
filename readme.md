@@ -101,3 +101,6 @@ def home(request):
     html = "<html><body>It is now %s.</body></html>" % now
     return HttpResponse(html)
 
+Como retornar um templates
+Ao invés de responder com return HttpResponse(), basta responder com render()
+é necessário criar um diretório chamado templates/contas e dentro o arquivo home.html
