@@ -55,3 +55,36 @@ urls.py - Local onde ficará as urls do projeto
 wsgi.py - endpoint da aplicação, não mexeremos neste aquivo
 manager.py - arquivo utilitário, vai ajudar a gerenciar o projeto, criar banco de dados, migrações upser usuários, não precisa mexer.
 
+Primeira App
+O django é baseado em Apps então vamos criar a primeira App digite no terminal da sua aplicação
+python manage.py startapp contas
+A App foi criada com os seguintes arquivos e diretório
+/migratios
+__init__.py - arquivo que informa que este dir e python
+admin.py - registrar a aplicação debtro do nosso admin
+apps.py - definiremos nossa app
+models.py - definiremos nossos models
+tests.py - usado para testes
+views.py - e as views
+
+OBS: quando criamos nossa App primeira coisa a ser feita é registrar nossa App no nosso settings
+
+INSTALLED_APPS = [
+    ........
+    'contas',
+]
+
+Criar nosso banco de dados com o seguinte comando criará o arquivo sqlite3
+python manage.py migrate
+
+criou o banco e estas tabelas:
+Apply all migrations: admin, auth, contenttypes, sessions
+
+Executando nossa aplicação local com o seguinte comando
+python manage.py runserver
+
+Criando o super usuario para logar na aplicação
+python manage.py createsuperuser
+
+
+
