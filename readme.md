@@ -104,3 +104,32 @@ def home(request):
 Como retornar um templates
 Ao invés de responder com return HttpResponse(), basta responder com render()
 é necessário criar um diretório chamado templates/contas e dentro o arquivo home.html
+
+def home(request):
+    now = datetime.datetime.now()
+    #html = "<html><body>It is now %s.</body></html>" % now
+    return render(request, 'contas/home.html')
+
+Models
+São basicamente cada campos da sua base de dados definidas em uma classe
+class Categoria(models.Model):
+    nome = models.CharField(max_length=100)
+    dt_criacao = models.DateTimeField(auto_now_add=True)
+
+Depois que você cria a model basta rodar a migrations e neste caso vamos criar com o seguinte código
+python manage.py makemigrations
+
+Criando um arquivo migrations dentro do dir migrations.
+controle_gastos/contas/migrations/0001_initial.py
+
+Uma vex que criou o arquivo migrations agora basta criar a tabela no banco com o seguinte comando
+python manage.py migrate
+
+Como ver de foi criado com sucesso a minha tabela? Basta ir no admin.py e registra sua model lá, sem precisar escreve grande linha de código.
+
+Basta rodar o server 
+
+python manage.py runserver
+
+Basta ir no seu admin e verifique que já esiste a categoria lá
+http://127.0.0.1:8000/admin/
