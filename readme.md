@@ -47,7 +47,7 @@ com a venv ativada basta digitar os seguintes comandos em sequências
 
     python
     import django
-    djadjango.VERSIONngo.VERSION
+    django.VERSION
 
 Para ver onde está instalado o django dentro da venv basta acessar
 
