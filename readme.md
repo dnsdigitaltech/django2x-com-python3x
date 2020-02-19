@@ -290,7 +290,7 @@ A view ficará assim:
         data['form'] = form
         return render(request, 'contas/form.html', data)
 
-O template listamgem.html ficará assim
+O template listagem.html ficará assim
 
     <h1>Listagem</h1>
     <ul>
@@ -322,3 +322,36 @@ Delete - ecluindo dados que estão na base
 
 Será necessário passar o id assim como no updade
 
+A view ficará assim:
+
+
+    def delete(request, pk):
+        transacao = Transacao.objects.get(pk=pk) # pega o objeto específico
+        transacao.delete()
+        return redirect('url_listagem') # Ao deletar retornará para listagem
+
+O template form.html ficará assim
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">salvar</button>
+        <a href="{% url 'url_delete' transacao.id %}">Remover</a>
+    </form>
+
+A url ficará assim
+
+    from django.contrib import admin
+    from django.urls import path
+    from contas.views import home, listagem, nova_transacao, update, delete
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('', listagem, name='url_listagem'),
+        path('nova/', nova_transacao, name='url_nova'),
+        path('update/<int:pk>/', update, name='url_update'),
+        path('delete/<int:pk>/', delete, name='url_delete'),
+        path('home/', home)
+    ]
