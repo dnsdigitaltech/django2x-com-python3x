@@ -5,30 +5,36 @@
 - Django
 - Pycharm ou VSCODE
 
-Python
+PYTHON
 
 Testar se o python está instalado, basta abrir o terminal e digitar o seguinte comando:
 python ou python3
 
-Pip
+PIP
 
-Ver se o Pip está intalado, geralmente ja vem com o python
+Ver se o Pip está instalado, geralmente já vem com o python
 é necessário criar uma virtual env, pois é um isolamento que o python criará em sua aplicação evitando que 
-interfira em outro projetos, criando um ambiente virtual para uma aplicação específica.
+interfira em um outro projeto, criando um ambiente virtual para uma aplicação específica.
 
-Para criar uma virtual env basta rodar o serguinte comando no terminal dentro do seu diretório python3 -m venv nome_da_sua_venv
+Para criar uma virtual env basta rodar o serguinte comando no terminal dentro do seu diretório 
+
+    python3 -m venv nome_da_sua_venv
 
     python3 -m venv venv
 
-para ativar sua venv basta digitar o seguinte comando
+Para ativar sua venv basta digitar o seguinte comando
 
     source  venv/bin/activate
 
-Aparece (venv) desenv01@desenv01-Vostro-3583:~/Documentos/django2x-com-python3x$ no início do seu terminal, pois o pip deixa isolado
+Aparece 
+
+    (venv) desenv01@desenv01-Vostro-3583:~/Documentos/django2x-com-python3x$ no início do seu terminal 
+
+Pois o  pip deixa isolado
 
 Se digitar pip o comando já funciona.
 
-Django
+DJANGO
 
 para instalar o djando basta digitar o comando
 
@@ -43,35 +49,42 @@ com a venv ativada basta digitar os seguintes comandos em sequências
     import django
     djadjango.VERSIONngo.VERSION
 
-Para ver onde está instalado o django dentro da venv banta acessar
+Para ver onde está instalado o django dentro da venv basta acessar
 
     /home/desenv01/Documentos/django2x-com-python3x/venv/lib/python3.6/site-packages/django
 
-Para criar o projeto basta digitar o seguuinte comando com a sua venv ativada
+    /seu-direorio-onde-esta-instalando-o-jango/venv/lib/python3.6/site-packages/django
+
+
+Para criar o projeto basta digitar o seguinte comando com a sua venv ativada
     
     django-admin startproject controle_gastos
 
 Você poderá ver que foi criado o projeto com todos arquivos de inicialização do django
 
 Explicação dos arquivos:
-__init__.py - que diser que este dir é considerado um pacote python
-asgi.py - onde fica o core do sistema
-settings.py - é o setup do nosso projeto
-urls.py - Local onde ficará as urls do projeto
-wsgi.py - endpoint da aplicação, não mexeremos neste aquivo
-manager.py - arquivo utilitário, vai ajudar a gerenciar o projeto, criar banco de dados, migrações upser usuários, não precisa mexer.
 
-Primeira App
+ - __init__.py -> que dizer que este dir é considerado um pacote python
+ - asgi.py -> onde fica o core do sistema
+ - settings.py -> é o setup do nosso projeto
+ - urls.py -> Local onde ficará as urls do projeto
+ - wsgi.py -> endpoint da aplicação, não mexeremos neste aquivo
+ - manager.py -> arquivo utilitário, vai ajudar a gerenciar o projeto, criar banco de dados, migrações upser  usuários, será bastante útil no terminal.
+
+PRIMEIRA APP
+
 O django é baseado em Apps então vamos criar a primeira App digite no terminal da sua aplicação
 python manage.py startapp contas
+
 A App foi criada com os seguintes arquivos e diretório
-/migratios
-__init__.py - arquivo que informa que este dir e python
-admin.py - registrar a aplicação debtro do nosso admin
-apps.py - definiremos nossa app
-models.py - definiremos nossos models
-tests.py - usado para testes
-views.py - e as views
+
+ - /migratios -> Onde ficará as migrations
+ - __init__.py - arquivo que informa que este dir e python
+ - admin.py - registrar a aplicação dentro do nosso admin
+ - apps.py - definiremos nossa app
+ - models.py - definiremos nossas models
+ - tests.py - usado para testes
+ - views.py - definiremos nossas views
 
 OBS: quando criamos nossa App primeira coisa a ser feita é registrar nossa App no nosso settings
 
@@ -85,17 +98,19 @@ Criar nosso banco de dados com o seguinte comando criará o arquivo sqlite3
     python manage.py migrate
 
 criou o banco e estas tabelas:
-Apply all migrations: admin, auth, contenttypes, sessions
 
-Executando nossa aplicação local com o seguinte comando
+    Apply all migrations: admin, auth, contenttypes, sessions
+
+Executando nossa aplicação local com o seguinte comando:
 
     python manage.py runserver
 
-Criando o super usuario para logar na aplicação
+Criando o super usuário para logar na aplicação, pois por padrãp ja vem um mini-sistema no admin
 
     python manage.py createsuperuser
 
 CRIANDO URL E VIEW 
+
 Para criar a url basta importá de uma view específica
 
     from contas.views import home
@@ -112,7 +127,10 @@ Toda view recebe requests como parâmetros e terá um return HttpResponse()
         html = "<html><body>It is now %s.</body></html>" % now
         return HttpResponse(html)
 
+TEMPLATES
+
 Como retornar um templates
+
 Ao invés de responder com return HttpResponse(), basta responder com render()
 é necessário criar um diretório chamado templates/contas e dentro o arquivo home.html
 
@@ -121,7 +139,8 @@ Ao invés de responder com return HttpResponse(), basta responder com render()
         #html = "<html><body>It is now %s.</body></html>" % now
         return render(request, 'contas/home.html')
 
-Models
+MODELS
+
 São basicamente cada campos da sua base de dados definidas em uma classe
 
     class Categoria(models.Model):
@@ -136,11 +155,11 @@ Criando um arquivo migrations dentro do dir migrations.
 
     controle_gastos/contas/migrations/0001_initial.py
 
-Uma vex que criou o arquivo migrations agora basta criar a tabela no banco com o seguinte comando
+Uma vez que criou o arquivo migrations agora basta criar a tabela no banco com o seguinte comando
 
     python manage.py migrate
 
-Como ver de foi criado com sucesso a minha tabela? Basta ir no admin.py e registra sua model lá, sem precisar escreve grande linha de código.
+Como ver que foi criado com sucesso a minha tabela? Basta ir no admin.py e registra sua model lá, sem precisar escreve grande linha de código.
 
 Basta rodar o server 
 
@@ -209,7 +228,7 @@ No template basta pegar os valores variáveis conforme mostrado abaixo:
 
 CRUD ['create','read','update','delete']
 
-Read - fazendo a leitura dos dados que estão na base
+READ - fazendo a leitura dos dados que estão na base
 
 Primeira coisa a fazer é chamar o importe do model na view
 
@@ -222,7 +241,7 @@ Depois cria uma classe para acessar todo conteúdo do banco
         data['transacoes'] = Transacao.objects.all()
         return render(request, 'contas/listagem.html', data)
 
-Create - fazendo a inserção dos dados  na base
+CREATE - fazendo a inserção dos dados  na base
 
 Formulário baseado em um Model (ModelForm)
 Primeiro a fazer pe criar um arquivo chamado forms.py, deposi basta colcoar os metadados dos campos do seu form conforma visualisado abaixo:
@@ -270,7 +289,7 @@ No seu template poderá usar seu formulário, não esquecedo com csrf_token
         <button type="submit">salvar</button>
     </form>
 
-Update - fazendo a atualização dos dados que estão na base
+UPDATE - fazendo a atualização dos dados que estão na base
 
 Agora á necessário criar uma url diferente, que ajude a encontrar o objeto certo no banco de dados, precisamos passar o id do objeto via paramêtro para localizá-lo na base.
 
@@ -318,7 +337,7 @@ A url ficará assim
         path('home/', home)
     ]
 
-Delete - ecluindo dados que estão na base
+DELETE - ecluindo dados que estão na base
 
 Será necessário passar o id assim como no updade
 
@@ -355,3 +374,20 @@ A url ficará assim
         path('delete/<int:pk>/', delete, name='url_delete'),
         path('home/', home)
     ]
+
+CORRIGINDO BUGS
+
+No template form.html por esle está sendo udado para criar, atualizar e excluir o objeto devemos colocar um if no botão remover
+
+O template form.html ficará assim
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">salvar</button>
+        {% if transacao %}
+        <a href="{% url 'url_delete' transacao.id %}">Remover</a>
+        {% endif %}
+    </form>
