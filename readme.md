@@ -26,9 +26,9 @@ Para ativar sua venv basta digitar o seguinte comando
 
     source  venv/bin/activate
 
-Aparece 
+Aparece (venv) no início do seu terminal 
 
-    (venv) desenv01@desenv01-Vostro-3583:~/Documentos/django2x-com-python3x$ no início do seu terminal 
+    (venv) desenv01@desenv01-Vostro-3583:~/Documentos/django2x-com-python3x$
 
 Pois o  pip deixa isolado
 
