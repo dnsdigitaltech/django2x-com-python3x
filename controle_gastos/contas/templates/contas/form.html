@@ -12,6 +12,7 @@
         {{ form.as_p }}
 
         <button type="submit">salvar</button>
+        <a href="{% url 'url_delete' transacao.id %}">Remover</a>
     </form>
 </body>
 </html>

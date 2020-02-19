@@ -36,4 +36,10 @@ def update(request, pk):
         return redirect('url_listagem') # Ao salvar retornará para listagem
 
     data['form'] = form
+    data['transacao'] = transacao # enviar objeto para ser deletado
     return render(request, 'contas/form.html', data)
+
+def delete(request, pk):
+    transacao = Transacao.objects.get(pk=pk) # pega o objeto específico
+    transacao.delete()
+    return redirect('url_listagem') # Ao deletar retornará para listagem
